@@ -5,9 +5,9 @@
 <p>Tecnologias utilizadas: Next.js, Prisma, PostgreSQL, TailwindCSS, TypeScript, Zod e React Hook Forms</p>
 
 <h1>Telas do Projeto</h1>
-<img src="https://github.com/user-attachments/assets/ec6cad69-f863-4dfc-9577-d7b775950579"> <br>
-
-<img src="https://github.com/user-attachments/assets/9428d26d-7820-44ff-b1ec-d5f74afdafb5">
+<img src="https://github.com/user-attachments/assets/011d7a30-cea0-4573-a1d2-e2a6ca44f180"> <br>
+<img src="https://github.com/user-attachments/assets/255ef32d-f75c-42af-a94e-9ff790407eb0"> <br>
+<img src="https://github.com/user-attachments/assets/eea890b5-155b-421f-b72a-00ba2fecf613">
 
 Como rodar o projeto:
 
