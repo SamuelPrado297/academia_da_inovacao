@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; /*Camadas*/
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Acesso as classes utilitárias. Você pode criar um componente estilizado CSS para ser utilizado em vários elementos*/
+@layer components {
+  .botao {
+    @apply bg-green-500 text-white px-2 rounded;
+  }
+}
