@@ -1,0 +1,20 @@
+//prisma migrate - processo de migração do modelo para o banco de dados. Toda vez que você modificar o model e aplicar uma migration, o seu banco de dados atualizará com a sua modificação
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//Criando tabela
+model user {
+  id            Int @id @default(autoincrement())
+  name          String
+  cpf           String
+  phone         String
+  email         String @unique
+  nacionality   String
+}
