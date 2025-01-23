@@ -5,9 +5,8 @@ import Title from "@/app/components/templates/title"
 import UserForm from "@/app/components/users/userForm"
 import useUsers from "@/app/components/data/hooks/useUsers"
 
-
 export default function UserPage() {
-    const { user, users, save, erase, modifyUser } = useUsers()
+    const { user, users, create, erase, update, modifyUser } = useUsers()
 
     return (
         <Page className="flex flex-col gap-10">
@@ -17,7 +16,8 @@ export default function UserPage() {
                 <UserForm
                     user={user}
                     onChange={modifyUser}
-                    save={save}
+                    create={create}
+                    update={update}
                     cancel={() => modifyUser(null)}
                     delete={erase}
                 />
