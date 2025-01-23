@@ -11,9 +11,17 @@ export default function useUsers() {
         Backend.users.get().then(setUsers)
     }, [])
 
-    async function save() {
+    async function create() {
         if (!user) return
-        await Backend.users.save(user)
+        await Backend.users.create(user)
+        const users = await Backend.users.get()
+        setUsers(users)
+        setUser(null)
+    }
+
+    async function update() {
+        if (!user || !user.id) return
+        await Backend.users.update(user.id, user)
         const users = await Backend.users.get()
         setUsers(users)
         setUser(null)
@@ -30,7 +38,8 @@ export default function useUsers() {
     return {
         users,
         user,
-        save,
+        create,
+        update,
         erase,
         cancel: () => setUser(null),
         modifyUser: (user: Partial<User> | null) => setUser(user),
