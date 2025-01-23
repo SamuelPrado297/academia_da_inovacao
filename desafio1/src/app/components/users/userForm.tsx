@@ -29,8 +29,9 @@ const createUserFormSchema = z.object({
 export interface UserFormProps {
     user: Partial<User>; 
     onChange: (user: Partial<User>) => void;
-    save: () => void;
+    create: () => void;
     cancel: () => void;
+    update: () => void;
     delete: () => void;
 }
 
@@ -44,7 +45,7 @@ export default function UserForm(props: UserFormProps) {
         const onSubmit = (data: CreateUserFormSchema) => {
                 if (isValid || null) {
                         props.onChange(data);
-                        props.save();
+                        props.create();
                 } else {
                         <p className="erro">Preencha os dados corretamente!</p>
                 }
@@ -95,6 +96,7 @@ export default function UserForm(props: UserFormProps) {
                 <div className="flex justify-between">
                     <div className="flex gap-5">
                         <button type="submit" className="bg-green-500 px-4 py-2 rounded-md">Salvar</button> {/*O formulário já salva os dados, não necessitando adicionar um evento */}
+                        <button type="button" className="bg-green-600 px-4 py-2 rounded-md" onClick={props.update}>Atualizar</button>
                         <button type="button" className="bg-zinc-500 px-4 py-2 rounded-md" onClick={props.cancel}>Cancelar</button> {/*type="button" necessário para diferenciar os botões na função onSubmit, evitando que eles tenham a mesma função de salvar dados*/}
                     </div>
                     <button type="button" className="bg-red-500 px-4 py-2 rounded-md" onClick={props.delete}>Excluir</button>
