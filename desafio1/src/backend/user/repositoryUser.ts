@@ -5,11 +5,9 @@ import { PrismaClient } from "@prisma/client";
 export default class UserRepository {
     private static db: PrismaClient = new PrismaClient()
 
-    static async save(user: User): Promise<User> { //Salva um usuário
-        return this.db.user.upsert({
-            where: { id: user.id},
-            update: user,
-            create: user
+    static async create(user: User): Promise<User> { //Cria um usuário
+        return this.db.user.create({
+            data: user,
          });
     }
 
@@ -21,7 +19,17 @@ export default class UserRepository {
         const user = await this.db.user.findUnique({
             where: { id },
         });
-        return user as User;
+        if (!user) { //Verifica se o usuário existe
+            throw new Error(`Usuário com ID ${id} não existe encontrado`)
+        }
+        return user;
+    }
+
+    static async update(id: number, user: Partial<User>): Promise<User> { //Função Update
+        return this.db.user.update({
+            where: {id: user.id},
+            data: user,
+        });
     }
     
     static async delete(id: number): Promise<void> { //Deleta um usuário pelo ID
